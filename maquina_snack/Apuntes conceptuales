@@ -1,7 +1,0 @@
-Se trabaja con los conceptos:
-
-* Llamada a un constructor interno: en la clase snack (la cual siempre debe ser la primera linea del constructor que lo llama.
-
-* Uso de bloque estático para inicializar un elemento estático: (Bloque de tipo estático inicalizador): en la clase Snacks, ya que como en esta clase se va a trabajar solo con métodos estáticos y la lista que se usa tambien se la creo como un elemento estático no se usa constructor, y por esto para inicializarlos se utiliza un bloque estático.
-
-Como se dijo para iniciar elementos estáticos en vez de usar un constructor se usa un bloque estático inicializardor, que cuando se cargue la clase se van a crear las elementos estáticos y se van a inicializar al ejecutar este bloque estático.
