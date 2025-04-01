@@ -56,7 +56,7 @@ public class MaquinaSnacks {
                 System.out.println("Regresa pronto");
                 salir = true;
             }
-            default -> System.out.println("Opción inválida "  + opcion);
+            default -> System.out.println("**** Opción inválida "  + opcion + ", elija una opción entre 1 y 4 ****");
         }
 
         return salir;
