@@ -14,92 +14,20 @@
     En Java, llamar a un constructor interno (o constructor de una clase interna) requiere una sintaxis específica debido a la relación entre la clase interna y su clase externa contenedora. Aquí te explico cómo hacerlo:
   </p>
 </section>
+
+    En la clase snack (la cual siempre debe ser la primera línea del constructor que lo llama.
 <section>
-  <h3>Explicación generada por Gemini AI</h3>
-  <p>
-    <b>1. Clases Internas No Estáticas (Inner Classes)</b>
-  </p>
-    Creación de Instancia:
-    Para crear una instancia de una clase interna no estática, primero necesitas una instancia de la clase externa.
-    Luego, utilizas esa instancia de la clase externa para crear la instancia de la clase interna.
-
-    Sintaxis:
-
-    Java
-<code>
-    class ClaseExterna {
-    class ClaseInterna {
-    public ClaseInterna() {
-    System.out.println("Constructor de ClaseInterna");
-    }
-    }
-
-    public void metodoExterno() {
-    ClaseInterna instanciaInterna = new ClaseInterna();
-    }
-
-    public ClaseInterna obtenerInstanciaClaseInterna(){
-    return new ClaseInterna();
-    }
-    }
-
-    public class Main {
-    public static void main(String[] args) {
-    ClaseExterna instanciaExterna = new ClaseExterna();
-    ClaseExterna.ClaseInterna instanciaInterna = instanciaExterna.new ClaseInterna();
-    instanciaExterna.metodoExterno();
-    instanciaExterna.obtenerInstanciaClaseInterna();
-    }
-    }
-  </code>
-    En el ejemplo:
-    instanciaExterna.new ClaseInterna(): Esta es la sintaxis para crear una instancia de la clase interna.
-    Para crear una instancia de una clase interna dentro de un metodo de la clase externa, solo se necesita colocar: new ClaseInterna();
-
-    2. Clases Internas Estáticas (Static Nested Classes)
-
-    Creación de Instancia:
-    Las clases internas estáticas no requieren una instancia de la clase externa.
-    Se crean como cualquier otra clase estática.
-
-    Sintaxis:
-
-    Java
-
-    class ClaseExterna {
-    static class ClaseInternaEstatica {
-    public ClaseInternaEstatica() {
-    System.out.println("Constructor de ClaseInternaEstatica");
-    }
-    }
-    }
-
-    public class Main {
-    public static void main(String[] args) {
-    ClaseExterna.ClaseInternaEstatica instanciaInternaEstatica = new ClaseExterna.ClaseInternaEstatica();
-    }
-    }
-
-    En el ejemplo:
-    new ClaseExterna.ClaseInternaEstatica(): Esta es la sintaxis para crear una instancia de la clase interna estática.
-
-    Puntos Clave
-
-    La diferencia principal radica en la dependencia de la instancia de la clase externa.
-    Las clases internas no estáticas tienen acceso a los miembros de la clase externa, mientras que las clases internas estáticas no.
-    En Java, un constructor es un bloque de código similar a un método que se llama cuando se crea una instancia de un objeto.
-    Los constructores son creados con el mismo nombre que la clase.
-    Los constructores no tienen tipo de retorno explícito.
-
-    En la clase snack (la cual siempre debe ser la primera linea del constructor que lo llama.
-
-    Uso de bloque estático para inicializar un elemento estático: (Bloque de tipo estático inicalizador): en la clase Snacks, ya que como en esta clase se va a trabajar solo con métodos estáticos y la lista que se usa tambien se la creo como un elemento estático no se usa constructor, y por esto para inicializarlos se utiliza un bloque estático.
-
+    <h2>Uso de bloque estático para inicializar elementos estáticos</h2><h3>Bloque de tipo estático inicalizador</h3>
+    <p>
+    En la clase Snacks, ya que como en esta clase se va a trabajar solo con métodos estáticos y la lista que se usa tambien se la creo como un elemento estático no se usa constructor, y por esto para inicializarlos se utiliza un bloque estático.
+    </p>
+    <p>
     Como se dijo para iniciar elementos estáticos en vez de usar un constructor se usa un bloque estático inicializador, que cuando se cargue la clase se van a crear las elementos estáticos y se van a inicializar al ejecutar este bloque estático.
     Para hacer se coloca la palabra static y se pone las llaves para indicar el bloque. Luego se trabaja como si fuera un constructor.
     Se usa para inicializar y hacer todo lo que tenga que ver con el contexto estático.
     Al estar en el bloque estático a los atributos no es necesario indicar el nombre, de la clase como si o tendríamos que hacer en otra circuntancia.
     Es decir por ejemplo usamos solo snack (para el atributo llamado así), en lugar de Snacks.snacks.
+    </p>
 </section>
 </body>
 </html>

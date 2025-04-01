@@ -50,21 +50,50 @@ public class MaquinaSnacks {
         var salir = false;
         switch (opcion){
             case 1 -> comprarSnack(consola, productos);
+            case 2 -> mostrarTicket(productos);
         }
 
         return salir;
 
-    };
+    }
 
     private static void comprarSnack(Scanner consola, List<Snack> productos){
+
+        //Recordar que la lista(arraylist) producto va a guardar los productos que el usuario piensa comprar
+
         System.out.println("Que snack quieres comprar (id)?");
         var idSnack = Integer.parseInt(consola.nextLine());
+
         //Validadr q el snack exista en la lista
         var snackEncontrado = false;
-        for(var snack: Snacks.getSnacks()){
+        for(var snack: Snacks.getSnacks()){//recupera el arraylist con los productos(objetos) existentes con el método getSnacks
+
+            if(idSnack == snack.getIdSnack()){
+               //Agregamos el snack a la lista de productos
+               productos.add(snack);
+                System.out.println("Ok, Snack agregado + snack");
+                snackEncontrado = true;
+                break;
+            }
+
 
         }
+        if(!snackEncontrado){
+            System.out.println("Id de snack no encontrado" + idSnack);
+        }
 
+
+    }
+
+    private static void mostrarTicket(List<Snack> productos){
+    var ticket = "*** Ticket de Venta ***";
+    var total = 0.0;
+    for(var producto: productos){
+        ticket += "\n\t-" + producto.getNombre() + " - $" + producto.getPrecio();
+        total += producto.getPrecio();
+    }
+        ticket += "\n\tTotal -> $" + total;
+        System.out.println(ticket);
 
     }
 }
