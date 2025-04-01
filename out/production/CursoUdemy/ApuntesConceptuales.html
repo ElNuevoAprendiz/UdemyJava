@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista y explicación de los conceptos necesarioa a reforzar de los temas tratados en el curso</title>
+</head>
+<body>
+<h1>Indice</h1>
+
+<section>
+  <h2>Llamada a un constructor interno</h2>
+  <p>
+    Cuando se desea llamar a otro constructor de la clase para evitar volver a escribir en el nuevo constructor lo que ya realiza un constructor existente, debemos colocar como primera linea del nuevo constructor la expresión this();, en este caso estaríamos llamando a un constructor vacío.
+    En Java, llamar a un constructor interno (o constructor de una clase interna) requiere una sintaxis específica debido a la relación entre la clase interna y su clase externa contenedora. Aquí te explico cómo hacerlo:
+  </p>
+</section>
+
+    En la clase snack (la cual siempre debe ser la primera línea del constructor que lo llama.
+<section>
+    <h2>Uso de bloque estático para inicializar elementos estáticos</h2><h3>Bloque de tipo estático inicalizador</h3>
+    <p>
+    En la clase Snacks, ya que como en esta clase se va a trabajar solo con métodos estáticos y la lista que se usa tambien se la creo como un elemento estático no se usa constructor, y por esto para inicializarlos se utiliza un bloque estático.
+    </p>
+    <p>
+    Como se dijo para iniciar elementos estáticos en vez de usar un constructor se usa un bloque estático inicializador, que cuando se cargue la clase se van a crear las elementos estáticos y se van a inicializar al ejecutar este bloque estático.
+    Para hacer se coloca la palabra static y se pone las llaves para indicar el bloque. Luego se trabaja como si fuera un constructor.
+    Se usa para inicializar y hacer todo lo que tenga que ver con el contexto estático.
+    Al estar en el bloque estático a los atributos no es necesario indicar el nombre, de la clase como si o tendríamos que hacer en otra circuntancia.
+    Es decir por ejemplo usamos solo snack (para el atributo llamado así), en lugar de Snacks.snacks.
+    </p>
+</section>
+</body>
+</html>

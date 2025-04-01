@@ -46,11 +46,12 @@ public class MaquinaSnacks {
         return Integer.parseInt(consola.nextLine());
     }
 
-    private static boolean ejecutarOpciones(int opcion, Scanner consola, List<Snack> productos){
+    private static boolean ejecutarOpciones(int opcion, Scanner consola, List<Snack> productos){//Se pasa el objeto consola para no tener que definir el objeto nuevamente
         var salir = false;
         switch (opcion){
             case 1 -> comprarSnack(consola, productos);
             case 2 -> mostrarTicket(productos);
+            case 3 -> agregarSnack(consola);
         }
 
         return salir;
@@ -58,6 +59,7 @@ public class MaquinaSnacks {
     }
 
     private static void comprarSnack(Scanner consola, List<Snack> productos){
+        //Se pasa el objeto consola para no tener que definir el objeto nuevamente
 
         //Recordar que la lista(arraylist) producto va a guardar los productos que el usuario piensa comprar
 
@@ -95,6 +97,17 @@ public class MaquinaSnacks {
         ticket += "\n\tTotal -> $" + total;
         System.out.println(ticket);
 
+    }
+
+    private static void agregarSnack(Scanner consola){
+        //Se pasa el objeto consola para no tener que definir el objeto nuevamente
+        System.out.print("Nombre del snack: ");
+        var nombre = consola.nextLine();
+        System.out.print("Precio del snack: ");
+        var precio = Double.parseDouble(consola.nextLine());
+        Snacks.agregarSnack(new Snack(nombre, precio));
+        System.out.println("Tu snack se ha agregado correctamente");
+        Snacks.mostrarSnack();
     }
 }
 
