@@ -17,7 +17,7 @@ public class Snacks {
         //Como el atributo era Final, no se va a poder cambiar la lista pero si su contenido.
 
         snacks = new ArrayList<>();
-        snacks.add(new Snack("Papas", 70)); //Se usa la instrucción new pq wstamos agregando un nuevo objeto snack a la lista.
+        snacks.add(new Snack("Papas", 70)); //Se usa la instrucción new pq estamos agregando un nuevo objeto snack a la lista.
         snacks.add(new Snack("Refresco", 50));
         snacks.add(new Snack("Sandwich", 120));
     }

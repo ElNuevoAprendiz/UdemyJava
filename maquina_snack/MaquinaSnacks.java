@@ -37,7 +37,7 @@ public class MaquinaSnacks {
                 Menu:
                 1. Comprar snack
                 2. Mostrar ticket
-                Agregar Nuevo Snack
+                3. Agregar Nuevo Snack
                 4. Salir
                 
                 Elige una opción \s""");
@@ -60,7 +60,7 @@ public class MaquinaSnacks {
         System.out.println("Que snack quieres comprar (id)?");
         var idSnack = Integer.parseInt(consola.nextLine());
         //Validadr q el snack exista en la lista
-        var snackEncontrado = False;
+        var snackEncontrado = false;
         for(var snack: Snacks.getSnacks()){
 
         }
