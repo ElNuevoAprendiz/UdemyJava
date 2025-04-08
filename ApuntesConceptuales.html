@@ -6,8 +6,18 @@
 </head>
 <body>
 <h1>Indice</h1>
-<a href="#LlamadaAConstructorInterno">Llamada a un constructor interno</a>
-<a href="#BloqueEstaticoInicializador">Uso de bloque estático para inicializar elementos estáticos</a>
+<ul>
+    <li><a href="#LlamadaAConstructorInterno">Llamada a un constructor interno</a></li>
+    <li><a href="#BloqueEstaticoInicializador">Uso de bloque estático para inicializar elementos estáticos</a></li>
+    <li><a href="#ClaseJavaIOFILE">La clase FILE de java.io.File</a></li>
+    <li>
+        <ul>
+            <li><a href="#CreacionObjFile">1. Creación de un objeto File</a></li>
+        </ul>
+
+    </li>
+    <li><a href="#clasePrintWriter">La clase PrintWriter de java.io</a></li>
+</ul>
 
 <section>
   <h2 id="LlamadaAConstructorInterno">Llamada a un constructor interno</h2>
@@ -32,39 +42,46 @@
     </p>
 </section>
 <section>
-    <h2>La clase java.io.File</h2>
+    <h2 id="ClaseJavaIOFILE">La clase FILE de java.io.File</h2>
     <p>
     La clase java.io.File en Java es una herramienta fundamental para interactuar con el sistema de archivos. Permite crear, eliminar, renombrar y obtener información sobre archivos y directorios. A continuación, te explico detalladamente cómo utilizarla, con ejemplos prácticos:
     </p>
-    <h4>1. Creación de un objeto File</h4>
+    <h4 id="CreacionObjFile">1. Creación de un objeto File</h4>
     <p>
     Un objeto File representa una ruta de acceso a un archivo o directorio en el sistema de archivos.
     Para crear un objeto File, puedes proporcionar la ruta como una cadena:
     <pre>
-    Java
+        Java
 
-    <code>
-    import java.io.File;
+        <code>
+            import java.io.File;
 
-    public class EjemploFile {
-        public static void main(String[] args) {
-            File archivo = new File("mi_archivo.txt");
-            File directorio = new File("mi_directorio");
-        }
-    }
-    </code>
+            public class EjemploFile {
+                public static void main(String[] args) {
+                    File archivo = new File("mi_archivo.txt");
+                    File directorio = new File("mi_directorio");
+                }
+            }
+        </code>
     </pre>
     </p>
-
+    <p>
     También puedes combinar rutas de directorios y nombres de archivos:
+    </p>
+    <p>
+        <pre>
 
-    Java
+            Java
+
+            <code>
+            File directorioPadre = new File("documentos");
+            File archivoHijo = new File(directorioPadre, "reporte.txt");
+            </code>
+        </pre>
+    </p>
 
 
-    File directorioPadre = new File("documentos");
-    File archivoHijo = new File(directorioPadre, "reporte.txt");
-
-
+    <p><pre>
     2. Verificación de existencia:
     El método exists() verifica si el archivo o directorio representado por el objeto File existe:
 
@@ -194,15 +211,17 @@
     Las rutas de acceso pueden ser absolutas (comenzando desde la raíz del sistema de archivos) o relativas (relativas al directorio de trabajo actual).
     La clase File no proporciona métodos para leer o escribir el contenido de los archivos. Para eso, se utilizan otras clases como FileInputStream, FileOutputStream, BufferedReader y BufferedWriter.
     Para operaciones más complejas, considera usar la API java.nio.file, que ofrece funcionalidades más avanzadas.
-
+</pre>
+    </p>
 
 </section>
 <section>
     <p>
-        <h2>La clase PrintWriter</h2>
+        <h2 id="clasePrintWriter">La clase PrintWriter</h2>
 
     </p>
     <p>
+        <pre>
         El PrintWriter en Java es una clase que se utiliza para escribir texto formateado en un flujo de salida. Es una herramienta muy versátil y útil para diversas tareas, como escribir en archivos, enviar datos a través de sockets o incluso imprimir en la consola.
 
         Aquí te explico en detalle el método PrintWriter de Java:
@@ -291,10 +310,95 @@
         El método flush() fuerza la escritura de cualquier dato almacenado en el buffer. Esto es importante en situaciones donde se necesita que los datos se escriban inmediatamente.
         PrintWriter es una clase útil para formatear y escribir texto, y es muy importante dentro de java.io.
 
-        Espero que esta explicación te haya sido de utilidad.
 
-
+        </pre>
     </p>
+</section>
+<section>
+    <pre>
+        La Clase FileWriter en Java: Escritura de Archivos de Texto
+
+La clase FileWriter en Java pertenece al paquete java.io y se utiliza para escribir datos de caracteres en archivos de texto plano. Es una clase conveniente para escribir cadenas de texto directamente a un archivo, manejando la complejidad de la interacción con el sistema de archivos.
+
+¿Qué es FileWriter?
+
+    Clase para Escritura de Caracteres: FileWriter está diseñada específicamente para escribir flujos de caracteres (texto) en un archivo. Esto significa que trabaja con datos de tipo char y String.
+    Clase de Alto Nivel: Proporciona una interfaz sencilla para la escritura de archivos, abstrayendo los detalles de bajo nivel de la manipulación de bytes y la codificación de caracteres (aunque internamente utiliza la codificación predeterminada del sistema).
+    Conexión a un Archivo: Al crear un objeto FileWriter, se asocia con un archivo específico en el sistema de archivos.
+    Escritura Secuencial: Los datos se escriben en el archivo de forma secuencial, uno tras otro.
+
+¿Cómo Funciona FileWriter?
+
+El funcionamiento básico de FileWriter implica los siguientes pasos:
+
+    Creación de una Instancia: Se crea un objeto FileWriter, proporcionando la ruta del archivo que se va a escribir. Existen dos constructores principales:
+        FileWriter(String fileName): Crea un FileWriter asociado al archivo especificado. Si el archivo no existe, se crea. Si existe, su contenido se sobrescribe.
+        FileWriter(String fileName, boolean append): Crea un FileWriter asociado al archivo especificado.
+            Si append es true, los datos se añadirán al final del archivo existente.
+            Si append es false (o se usa el constructor anterior), el archivo existente se sobrescribe.
+
+    Escritura de Datos: Se utilizan los métodos de la clase FileWriter para escribir caracteres o cadenas de texto en el archivo asociado. Los métodos principales son:
+        write(int c): Escribe un único carácter (representado por su valor entero Unicode).
+        write(char[] cbuf): Escribe un array de caracteres.
+        write(String str): Escribe una cadena de texto.
+        write(String str, int off, int len): Escribe una porción de una cadena de texto, comenzando en el índice off y escribiendo len caracteres.
+
+    Cierre del Flujo: Es crucial cerrar el FileWriter una vez que se ha terminado de escribir. Esto asegura que todos los datos en el búfer interno se escriban al disco y que se liberen los recursos del sistema asociados al archivo. Se utiliza el método close() para esto.
+
+Ejemplo Básico de Escritura (Sobrescribiendo el archivo):
+Java
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EjemploFileWriterSobreescribir {
+    public static void main(String[] args) {
+        String nombreArchivo = "mi_archivo.txt";
+
+        try (FileWriter escritor = new FileWriter(nombreArchivo)) {
+            escritor.write("Este es el primer texto que se escribe.\n");
+            escritor.write("Esta es la segunda línea.\n");
+            System.out.println("Datos escritos en el archivo: " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+    }
+}
+
+Ejemplo de Escritura (Añadiendo al final del archivo):
+Java
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class EjemploFileWriterAnadir {
+    public static void main(String[] args) {
+        String nombreArchivo = "mi_archivo.txt";
+
+        try (FileWriter escritor = new FileWriter(nombreArchivo, true)) {
+            escritor.write("Este texto se añade al final.\n");
+            System.out.println("Datos añadidos al archivo: " + nombreArchivo);
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el archivo: " + e.getMessage());
+        }
+    }
+}
+
+Manejo de Excepciones:
+
+Es importante notar que las operaciones de escritura de archivos pueden generar la excepción IOException. Por lo tanto, el código que utiliza FileWriter debe estar dentro de un bloque try-catch para manejar posibles errores como problemas de permisos, disco lleno o archivo no encontrado.
+
+El Bloque try-with-resources:
+
+En los ejemplos anteriores, se utiliza el bloque try-with-resources. Esta es una forma más segura y concisa de asegurar que el FileWriter se cierre automáticamente al finalizar el bloque try, incluso si ocurre una excepción. Esto evita la necesidad de llamar explícitamente a escritor.close() en un bloque finally.
+
+Consideraciones Importantes:
+
+    Codificación de Caracteres: FileWriter utiliza la codificación de caracteres predeterminada del sistema operativo. Si necesitas una codificación específica (como UTF-8), es más recomendable utilizar la clase OutputStreamWriter junto con un FileOutputStream, especificando la codificación deseada.
+    Eficiencia para Grandes Cantidades de Datos: Para escribir grandes cantidades de datos de manera más eficiente, considera utilizar un BufferedWriter que envuelve un FileWriter. BufferedWriter almacena los datos en un búfer en memoria y los escribe al disco en bloques más grandes, reduciendo la cantidad de operaciones de escritura física.
+
+En resumen, FileWriter es una clase fundamental en Java para escribir archivos de texto de manera sencilla. Permite escribir caracteres y cadenas directamente a un archivo, con la opción de sobrescribir o añadir contenido. Sin embargo, para un control más fino sobre la codificación y para una mayor eficiencia con grandes cantidades de datos, existen alternativas como OutputStreamWriter y BufferedWriter. Siempre es crucial manejar las posibles IOException y cerrar el flujo después de su uso.
+    </pre>
 </section>
 </body>
 </html>
