@@ -6,9 +6,11 @@
 </head>
 <body>
 <h1>Indice</h1>
+<a href="#LlamadaAConstructorInterno">Llamada a un constructor interno</a>
+<a href="#BloqueEstaticoInicializador">Uso de bloque estático para inicializar elementos estáticos</a>
 
 <section>
-  <h2>Llamada a un constructor interno</h2>
+  <h2 id="LlamadaAConstructorInterno">Llamada a un constructor interno</h2>
   <p>
     Cuando se desea llamar a otro constructor de la clase para evitar volver a escribir en el nuevo constructor lo que ya realiza un constructor existente, debemos colocar como primera linea del nuevo constructor la expresión this();, en este caso estaríamos llamando a un constructor vacío.
     En Java, llamar a un constructor interno (o constructor de una clase interna) requiere una sintaxis específica debido a la relación entre la clase interna y su clase externa contenedora. Aquí te explico cómo hacerlo:
@@ -17,7 +19,7 @@
 
     En la clase snack (la cual siempre debe ser la primera línea del constructor que lo llama.
 <section>
-    <h2>Uso de bloque estático para inicializar elementos estáticos</h2><h3>Bloque de tipo estático inicalizador</h3>
+    <h2 id="BloqueEstaticoInicializador">Uso de bloque estático para inicializar elementos estáticos</h2><h3>Bloque de tipo estático inicalizador</h3>
     <p>
     En la clase Snacks, ya que como en esta clase se va a trabajar solo con métodos estáticos y la lista que se usa tambien se la creo como un elemento estático no se usa constructor, y por esto para inicializarlos se utiliza un bloque estático.
     </p>
