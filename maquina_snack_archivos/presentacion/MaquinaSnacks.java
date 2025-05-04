@@ -54,12 +54,12 @@ public class MaquinaSnacks {
         return Integer.parseInt(consola.nextLine());
     }
 
-    private static boolean ejecutarOpciones(int opcion, Scanner consola, List<Snack> productos){//Se pasa el objeto consola para no tener que definir el objeto nuevamente
+    private static boolean ejecutarOpciones(int opcion, Scanner consola, List<Snack> productos, IServicioSnacks servicioSnacks){//Se pasa el objeto consola para no tener que definir el objeto nuevamente
         var salir = false;
         switch (opcion){
-            case 1 -> comprarSnack(consola, productos);
+            case 1 -> comprarSnack(consola, productos, servicioSnacks);
             case 2 -> mostrarTicket(productos);
-            case 3 -> agregarSnack(consola);
+            case 3 -> agregarSnack(consola,servicioSnacks);
             case 4 -> {
                 System.out.println("Regresa pronto");
                 salir = true;
@@ -71,7 +71,7 @@ public class MaquinaSnacks {
 
     }
 
-    private static void comprarSnack(Scanner consola, List<Snack> productos){
+    private static void comprarSnack(Scanner consola, List<Snack> productos, IServicioSnacks servicioSnacks){
         //Se pasa el objeto consola para no tener que definir el objeto nuevamente
 
         //Recordar que la lista(arraylist) producto va a guardar los productos que el usuario piensa comprar
@@ -86,7 +86,7 @@ public class MaquinaSnacks {
             if(idSnack == snack.getIdSnack()){
                //Agregamos el snack a la lista de productos
                productos.add(snack);
-                System.out.println("Ok, Snack agregado + snack");
+                System.out.println("Ok, Snack agregado" + snack);
                 snackEncontrado = true;
                 break;
             }
@@ -112,15 +112,15 @@ public class MaquinaSnacks {
 
     }
 
-    private static void agregarSnack(Scanner consola){
+    private static void agregarSnack(Scanner consola, IServicioSnacks servicioSnacks){
         //Se pasa el objeto consola para no tener que definir el objeto nuevamente
         System.out.print("Nombre del snack: ");
         var nombre = consola.nextLine();
         System.out.print("Precio del snack: ");
         var precio = Double.parseDouble(consola.nextLine());
-        ServicioSnacksLista.agregarSnack(new Snack(nombre, precio));
+        servicioSnacks.agregarSnack(new Snack(nombre, precio));
         System.out.println("Tu snack se ha agregado correctamente");
-        ServicioSnacksLista.mostrarSnack();
+        servicioSnacks.mostrarSnacks();
     }
 }
 
