@@ -24,16 +24,19 @@ public class ServicioSnackArchivos implements IServicioSnacks{
         try{
             existe =archivo.exists();
             if(existe){
-                this.snacks = obtenerSnacks();
+                //this.snacks = obtenerSnacks();
             }
             else{// Si no existe, creamos el archivo que va a tener nuestros snacks.
-                var salida = new PrintWriter((new FileWriter(archivo)));
-
-
+                var salida = new PrintWriter(new FileWriter(archivo));
+                salida.close(); //se guarda el archivo en disco pq sino solo se encuentra en memoria
+                System.out.println("Se ha ccrreado el archivo");
             }
         } catch (Exception e) {
             System.out.println("Error al crear el archivo: " + e.getMessage());
         }
+        //Si no existe, cargamos algunos snack iniciales
+        if(!existe)
+            cargarSnacksIniciales();
     }
 
 
