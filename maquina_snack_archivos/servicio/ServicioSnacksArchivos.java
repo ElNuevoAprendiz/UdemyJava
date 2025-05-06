@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicioSnackArchivos implements IServicioSnacks{
+public class ServicioSnacksArchivos implements IServicioSnacks{
 
     private final String NOMBRE_ARCHIVO ="snack.txt"; //COnstante que tiene el nombre del archivo, que tendrá
     //el inventario de snacks disponible en la aplicación
@@ -17,7 +17,7 @@ public class ServicioSnackArchivos implements IServicioSnacks{
     private  List<Snack> snacks =new ArrayList<>();
 
     //Creamos el constructor de la clase
-    public ServicioSnackArchivos(){
+    public ServicioSnacksArchivos(){
         //Creamos el archivo si no existe
         var archivo = new File(NOMBRE_ARCHIVO);
         var existe = false;
@@ -39,6 +39,9 @@ public class ServicioSnackArchivos implements IServicioSnacks{
             cargarSnacksIniciales();
     }
 
+    private void cargarSnacksIniciales(){
+
+    }
 
     @Override
     public void agregarSnack(Snack snack) {

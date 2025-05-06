@@ -1,70 +1,59 @@
 package maquina_snack_archivos.dominio;
 
-import java.io.Serializable;
-import java.util.Objects;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Snack implements Serializable {
-    private static int contadorSnack = 0;
-    private int idSnack;
-    private String nombre;
-    private double precio;
+public class Snack {
+    private static final List<Snack> snacks;
 
-    public Snack(){
-        this.idSnack = ++Snack.contadorSnack;
+    //Bloque de tipo estático inicalizador
+    //
+    // para iniciar elementos estáticos en vez de usar un constructor
+    //Cuando se cargue la clase se van a crear las elementos estáticos y se van a inicializar al ejecutar este
+    //bloque estático.
+
+    static{
+        //Ya que estamos en un bloque estático solo usamos el nombre del atributo snack, en vez de Snacks.snacks.
+        //Como el atributo era Final, no se va a poder cambiar la lista pero si su contenido.
+
+        snacks = new ArrayList<>();
+        snacks.add(new Snack("Papas", 70)); //Se usa la instrucción new pq estamos agregando un nuevo objeto snack a la lista.
+        snacks.add(new Snack("Refresco", 50));
+        snacks.add(new Snack("Sandwich", 120));
     }
 
-    public Snack(String nombre, double precio){
-        //mandamos a llamar al constructor vacio para no tener que repetir lo que hace este
-        //para hacerlo, siempre como primera linea escribimos this(), sin nada en el paréntesis
-        // ya q este constructor no recibe parámetros. Siempre la llamada a un constructor interno
-        // debe ser la primera linea.
-        this();
-        this.nombre = nombre;
-        this.precio = precio;
+    //Definimos ahora los métodos estáticos de la clase
+
+    public static void agregarSnack(Snack snack){
+        snacks.add(snack);
     }
 
-    public static int getContadorSnack() {
-        return contadorSnack;
+    public static void mostrarSnack(){
+        //Muestra el inventario disponible de Snacks
+        var inventarioSnacks = "";
+        for(var snack: snacks){
+
+            // Usamos el método toString() que definimos en la clase Snack, que indica que va a imprimir de cada objeto como un String.
+
+            /*Esto es lo que retornaba el método toString() de la clase Snack
+
+                    return "maquina_snack.Snack{" +
+                                    "idSnack=" + idSnack +
+                                    ", nombre='" + nombre + '\\'' +
+                                    ", precio=" + precio +
+                                    '}';
+                    */
+            inventarioSnacks += snack.toString() + "\n";
+
+
+        }
+        System.out.println("-------------Snack en el inventario--------");
+        System.out.println(inventarioSnacks);
     }
 
-    public double getPrecio() {
-        return precio;
+    public static List<Snack> getSnacks(){
+        return snacks;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
-    }
 
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getIdSnack() {
-        return idSnack;
-    }
-
-    @Override
-    public String toString() {
-        return "maquina_snack.Snack{" +
-                "idSnack=" + idSnack +
-                ", nombre='" + nombre + '\'' +
-                ", precio=" + precio +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-        Snack snack = (Snack) o;
-        return idSnack == snack.idSnack && Double.compare(precio, snack.precio) == 0 && Objects.equals(nombre, snack.nombre);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(idSnack, nombre, precio);
-    }
 }
