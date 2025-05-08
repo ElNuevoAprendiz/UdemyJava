@@ -35,9 +35,30 @@ public class ServicioSnacksArchivos implements IServicioSnacks{
         if(!existe)
             cargarSnacksIniciales();
     }
+    private  void  cargarSnacksIniciales(){
+        this.agregarSnack(new Snack("Papas", 70));
+        this.agregarSnack(new Snack("Refresco", 50));
+        this.agregarSnack(new Snack("Sandwich", 120));
 
+    }
     @Override
     public void agregarSnack(Snack snack) {
+        // Agregamos el nuevo snack,
+        // Paso 1 Se guarda el snack a la lista en memoria
+
+        //Recordar que snacks es la lista que se definio más arriba y que va a ir recibiendo los snack y
+        //guardandolos en memoria y luego serán volcados al archivo
+
+        this.snacks.add(snack);
+
+        //Paso 2. Guardamos el nuevo snack en el archivo.
+
+        this.agregarSnackArchivo(snack);
+
+
+    }
+
+    private void agregarSnackArchivo(Snack snack){
 
     }
 

@@ -5,7 +5,7 @@
     <title>Lista y explicación de los conceptos necesarioa a reforzar de los temas tratados en el curso</title>
 </head>
 <body>
-<h1>Indice</h1>
+<h1 id="Indice">Indice</h1>
 <ul>
     <li><a href="#LlamadaAConstructorInterno">Llamada a un constructor interno</a></li>
     <li><a href="#BloqueEstaticoInicializador">Uso de bloque estático para inicializar elementos estáticos</a></li>
@@ -18,7 +18,9 @@
     </li>
     <li><a href="#clasePrintWriter">La clase PrintWriter de java.io</a></li>
     <li><a href="#claseFileWriter">La clase FileWriter de java.nio</a></li>
+    <li><a href="#PrintWriterJuntoAFileWriter">¿Porque se usa PrintWriter junto a FileWriter?</a></li>
     <li><a href="#BufferedReader&FileReader">Las clases `BufferedReader` y `FileReader`</a></li>
+    <li><a href="#ClaseArrayList">La clase ArrayList</a></li>
 </ul>
 
 <section>
@@ -26,10 +28,12 @@
   <p>
     Cuando se desea llamar a otro constructor de la clase para evitar volver a escribir en el nuevo constructor lo que ya realiza un constructor existente, debemos colocar como primera linea del nuevo constructor la expresión this();, en este caso estaríamos llamando a un constructor vacío.
     En Java, llamar a un constructor interno (o constructor de una clase interna) requiere una sintaxis específica debido a la relación entre la clase interna y su clase externa contenedora. Aquí te explico cómo hacerlo:
+      En la clase snack (la cual siempre debe ser la primera línea del constructor que lo llama.
   </p>
 </section>
+<a href="#Indice">Volver al indice</a>
 
-    En la clase snack (la cual siempre debe ser la primera línea del constructor que lo llama.
+
 <section>
     <h2 id="BloqueEstaticoInicializador">Uso de bloque estático para inicializar elementos estáticos</h2><h3>Bloque de tipo estático inicalizador</h3>
     <p>
@@ -43,6 +47,8 @@
     Es decir por ejemplo usamos solo snack (para el atributo llamado así), en lugar de Snacks.snacks.
     </p>
 </section>
+<a href="#Indice">Volver al indice</a>
+
 <section>
     <h2 id="ClaseJavaIOFILE">La clase FILE de java.io.File</h2>
     <p>
@@ -217,6 +223,8 @@
     </p>
 
 </section>
+<a href="#Indice">Volver al indice</a>
+
 <section>
     <p>
         <h2 id="clasePrintWriter">La clase PrintWriter</h2>
@@ -316,6 +324,8 @@
         </pre>
     </p>
 </section>
+<a href="#Indice">Volver al indice</a>
+
 <section>
 
         <h2 id="claseFileWriter">La Clase FileWriter: Escritura de Archivos de Texto</h2>
@@ -402,6 +412,32 @@ Consideraciones Importantes:
 En resumen, FileWriter es una clase fundamental en Java para escribir archivos de texto de manera sencilla. Permite escribir caracteres y cadenas directamente a un archivo, con la opción de sobrescribir o añadir contenido. Sin embargo, para un control más fino sobre la codificación y para una mayor eficiencia con grandes cantidades de datos, existen alternativas como OutputStreamWriter y BufferedWriter. Siempre es crucial manejar las posibles IOException y cerrar el flujo después de su uso.
     </pre>
 </section>
+<a href="#Indice">Volver al indice</a>
+
+<section>
+    <h2 id="PrintWriterJuntoAFileWriter">¿Porque se usa PrintWriter junto a FileWriter?</h2>
+    <pre>
+
+En Java, se usa PrintWriter en combinación con FileWriter (o otros Writer como BufferedWriter) para escribir texto en un archivo con mayor flexibilidad y opciones de formato. FileWriter se utiliza para escribir datos de caracteres en un archivo, mientras que PrintWriter agrega métodos para formatear la salida, como println() y printf(), y la posibilidad de habilitar el vaciado automático, que se necesita para que la información se registre en el archivo inmediatamente.
+En detalle:
+
+    FileWriter:
+    Esta clase es la base para escribir en un archivo. Permite escribir caracteres en un archivo, manejando la codificación de caracteres.
+
+PrintWriter:
+Esta clase se basa en Writer y agrega la capacidad de formatear la salida antes de escribirla en el flujo de salida. Permite usar métodos como println() para imprimir líneas, printf() para formatear según especificaciones, y tiene un constructor que permite habilitar el vaciado automático (flush) para que los datos se escriban inmediatamente al archivo.
+Por qué se usa en conjunto:
+
+    Formateo de salida: PrintWriter facilita la creación de archivos de texto con formato, lo que es útil para crear logs, generar informes o cualquier otro tipo de archivo que requiera organización de la información.
+
+Vaciado automático: El vaciado automático en PrintWriter garantiza que los datos se escriban en el archivo tan pronto como se llaman los métodos de escritura, lo que puede ser importante para aplicaciones que requieren una escritura inmediata.
+Mayor control: Al usar PrintWriter con FileWriter, se tiene más control sobre la manera en que se escribe la información en el archivo, incluyendo la gestión de la codificación de caracteres.
+
+En resumen: FileWriter escribe el contenido en el archivo, mientras que PrintWriter facilita la escritura de datos formateados y permite controlar el vaciado automático. La combinación de ambas clases permite una escritura más eficiente y flexible en archivos de texto
+    </pre>
+</section>
+<a href="#Indice">Volver al indice</a>
+
 <section>
     <pre>
         <h2 id="BufferedReader&FileReader">Las clases `BufferedReader` y `FileReader`</h2>
@@ -518,5 +554,33 @@ En este ejemplo:
 Recuerda siempre cerrar los flujos (`Reader`s) en el bloque `finally` para evitar fugas de recursos. Cuando usas `BufferedReader`, solo necesitas cerrar el `BufferedReader`, ya que esto también cerrará el `Reader` subyacente que envolvió.
     </pre>
 </section>
+<a href="#Indice">Volver al indice</a>
+
+<section>
+    <pre>
+    <h2 id="ClaseArrayList">La clase ArrayList</h2>
+En Java, un ArrayList es una clase que implementa una lista dinámica, similar a un array pero con la capacidad de cambiar su tamaño durante la ejecución. Es una estructura de datos que permite almacenar una colección de objetos de manera organizada y ordenada, y facilita la manipulación de estos objetos mediante métodos predefinidos.
+En detalle:
+
+    Lista dinámica:
+    A diferencia de los arrays tradicionales que tienen un tamaño fijo, un ArrayList puede crecer o disminuir según sea necesario al agregar o eliminar elementos.
+    Marco de colecciones:
+    ArrayList es parte del marco de colecciones de Java, lo que significa que proporciona una serie de métodos para agregar, eliminar, acceder, buscar y manipular elementos de la lista.
+    Interfaz List:
+    ArrayList implementa la interfaz List, lo que significa que ofrece las funcionalidades básicas de una lista, como el orden de los elementos y la posibilidad de acceder a ellos por su índice.
+    Creación y uso:
+    Para crear un ArrayList, se importa la clase java.util.ArrayList y se instancia. Luego, se pueden agregar elementos utilizando el método add(), acceder a ellos mediante get(), y eliminar elementos con remove(), entre otros métodos.
+    Ventajas:
+        Tamaño dinámico: Facilita el manejo de colecciones de elementos cuyo tamaño no es conocido de antemano.
+        Métodos predefinidos: Ofrece una amplia gama de métodos para manipular la lista, lo que simplifica el desarrollo.
+        Acceso aleatorio: Permite acceder a cualquier elemento de la lista por su índice, lo que facilita la búsqueda y manipulación de elementos.
+    Desventajas:
+        Tiempo de acceso: Aunque el acceso a elementos por índice es rápido, la inserción o eliminación de elementos en el medio de la lista puede ser menos eficiente que en otras estructuras de datos como LinkedList.
+        Consumo de memoria: El ArrayList puede consumir más memoria que un array tradicional, ya que almacena una matriz interna que puede ser mayor que la cantidad actual de elementos.
+
+En resumen, ArrayList es una herramienta poderosa para gestionar colecciones de objetos en Java, especialmente cuando el tamaño de la colección es variable o cuando se requiere acceso aleatorio a los elementos.
+    </pre>
+</section>
+<a href="#Indice">Volver al indice</a>
 </body>
 </html>
